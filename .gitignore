@@ -1,0 +1,7 @@
+# Never commit real credentials.
+config/.env
+
+# Runtime state written by the continuous runner, not source.
+logs/
+*.pyc
+__pycache__/

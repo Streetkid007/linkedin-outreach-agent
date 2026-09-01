@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS launchd service template. Runs scripts/run_forever.sh in the
+  background, survives closing the terminal and logging out (not a full
+  restart unless RunAtLoad + a login item is also set up, see
+  docs/RUNNING_LOCALLY.md).
+
+  Before using: replace every /Users/juliette/REPLACE_WITH_PATH below with
+  the real absolute path to wherever you unzipped this project, e.g.
+  /Users/juliette/clover-outreach-agent. launchd does not expand ~ or run
+  through your shell profile, so PATH here needs to explicitly include
+  wherever `claude` and `python3` actually live on your machine (run
+  `which claude` and `which python3` in your terminal to check).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.clover.outreach-agent</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/juliette/REPLACE_WITH_PATH/clover-outreach-agent/scripts/run_forever.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/juliette/REPLACE_WITH_PATH/clover-outreach-agent</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/juliette/REPLACE_WITH_PATH/clover-outreach-agent/logs/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/juliette/REPLACE_WITH_PATH/clover-outreach-agent/logs/launchd.err.log</string>
+</dict>
+</plist>
