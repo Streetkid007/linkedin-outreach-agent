@@ -114,10 +114,20 @@ once, not appended again every cycle.
 
 ## Stage 2: connect (first invite, stalled-invite retry, and silent-founder escalation)
 For every in scope, non warm_intro company at Status = New, Invite Sent,
-or Follow Up Sent, with a resolved founder LinkedIn URL (config/fields.py
-explains the lookup order: Founder LinkedIn Verified field first, then
-Affinity's own enrichment field; if neither is present, skip and leave at
-New, do not guess a URL):
+or Follow Up Sent, resolve a founder LinkedIn URL as follows:
+
+**Step 0: Founder LinkedIn URL discovery**
+1. Check the company's Founder LinkedIn (Verified) field. If present and is
+   a valid LinkedIn profile URL (linkedin.com/in/..., not company page), use it.
+2. If not, check Affinity's enriched LinkedIn field for the same.
+3. If still not present, extract the founder name from the company record
+   (look in company notes, enriched data, or company name if it's a founder
+   name). Use WebSearch to find the founder's LinkedIn profile. Prioritize
+   the most recent LinkedIn URL that matches the founder's name.
+4. If any step finds a valid URL, proceed. If all steps yield nothing, skip
+   this company and leave at New — do not guess a URL.
+
+Once a valid founder LinkedIn URL is obtained, proceed:
 
 1. Resolve this company's target account fresh from its Owners field, per
    the dual-account rule above.
@@ -268,3 +278,8 @@ that line plus a short plain text summary: how many companies moved at
 each stage, how many were skipped and why, and anything that needs
 Juliette's attention (a cap hit, a missing LinkedIn URL, a reply-listing
 gap in stage 6, anything you were not confident enough to act on).
+
+Then, commit webhook logs to GitHub by running:
+`bash scripts/commit_webhook_logs.sh`
+
+This ensures the cloud agent has access to the latest webhook state on its next run.

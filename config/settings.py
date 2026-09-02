@@ -93,13 +93,13 @@ DAILY_RUN_TIMES = [
 # pass with no rate limit errors or LinkedIn restriction notices in
 # logs/run_errors.log, and once you know for certain which plan is
 # actually connected.
-MAX_INVITES_PER_DAY = int(os.environ.get("MAX_INVITES_PER_DAY", 10))
+MAX_INVITES_PER_DAY = int(os.environ.get("MAX_INVITES_PER_DAY", 20))
 
 # Hard ceiling on first messages and follow ups sent per rolling day,
 # combined. The lowest weekly figure seen for messages was 100 a week on a
 # free account, call it roughly 14 a day; 10 a day sits under that with
 # some margin, same reasoning as the invite cap above.
-MAX_MESSAGES_PER_DAY = int(os.environ.get("MAX_MESSAGES_PER_DAY", 10))
+MAX_MESSAGES_PER_DAY = int(os.environ.get("MAX_MESSAGES_PER_DAY", 20))
 
 # Character limit enforced on an invite note before scripts/unipile_cli.py
 # will attach it. The two sources that mention a character limit at all
@@ -148,11 +148,13 @@ OWNERS = {
     "Hugo Mendes": {
         "first_name": "Hugo",
         "email": "hugo.mendes@cloverfund.vc",
+        "calendar_link": "https://calendar.app.google/4pQajyWMQULc1oBp9",
         "unipile_account_id": os.environ.get("UNIPILE_LINKEDIN_ACCOUNT_ID_HUGO", ""),
     },
     "Juliette Moortgat": {
         "first_name": "Juliette",
         "email": "juliette.moortgat@cloverfund.vc",
+        "calendar_link": "https://calendar.app.google/QVkh2MeVPdneFYUx5",
         "unipile_account_id": os.environ.get("UNIPILE_LINKEDIN_ACCOUNT_ID_JULIETTE", ""),
     },
 }
