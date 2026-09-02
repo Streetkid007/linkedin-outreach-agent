@@ -23,6 +23,19 @@ rounds for existing portfolio companies. Geography priority: France first,
 then UK, then the US, and within the US mainly the Bay Area, New York, and
 the Austin tech corridor rather than other US regions.
 
+## Outreach language
+Outreach messages should be in the founder's native language when identifiable:
+- Use **French** if the founder is French, based on: location (Paris, France),
+  past work history (worked in France), education (studied in France), or
+  clear French nationality markers in profile.
+- Use **French** if the company is based in France, regardless of founder origin.
+- Otherwise use **English**.
+
+The assumption in founder discovery should favor French: French-speaking
+founders are common in Clover's target geography (France-first priority),
+so default to French unless profile data clearly indicates otherwise (non-French
+location, past work elsewhere, etc.).
+
 ## Check size and valuation
 RESOLVED 2026-08-13: Juliette confirmed 100K to 200K euros is the correct
 current range, matching every template in the outreach playbook. The 50K to
@@ -35,8 +48,7 @@ money, not a hard rule, high conviction exceptions exist (AMI Labs, a
 Mistral secondary).
 
 ## Team assessment sources
-LinkedIn profiles (past roles, career history, tenure), Harmonic enrichment
-(funding, headcount, traction), past company or exit history, school or
+LinkedIn profiles (past roles, career history, tenure), past company or exit history, school or
 accelerator pedigree.
 
 ## Weighted scoring board
